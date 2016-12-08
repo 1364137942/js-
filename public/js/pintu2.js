@@ -8,15 +8,15 @@ $(function () {
     * new PintTu($container, $start, num, width, height);
     * $container -> 装载拼图的容器
     * $start -> 开始按钮
-    * $num -> 拼图的块数
+    * $num -> 拼图的块数,需要设定为可开平方的
     * width -> 暂时使用默认值，请不要改变
     * height -> 暂时使用默认值，请不要改变
     * */
-    var pingtu = new PingTu($('#container'), $('#start'), 64);
-    pingtu.init();
+    var pintu = new PinTu($('#container'), $('#start'), 64);
+    pintu.init();
 });
 
-var PingTu = function ($container, $start, num = 16, width = 960, height = 540) {
+var PinTu = function ($container, $start, num = 16, width = 960, height = 540) {
     //拼图容器的值
     this.width = width;
     this.height = height;
@@ -39,7 +39,7 @@ var PingTu = function ($container, $start, num = 16, width = 960, height = 540) 
     this.$start = $('#start');
 };
 
-PingTu.prototype.init = function () {
+PinTu.prototype.init = function () {
     this.xNum = Math.sqrt(this.num);
     this.xWidth = this.width / this.xNum;
     this.yHeight = this.height / this.xNum;
@@ -50,7 +50,7 @@ PingTu.prototype.init = function () {
     return this;
 };
 
-PingTu.prototype.getSmallItem = function () {
+PinTu.prototype.getSmallItem = function () {
     //存放拼图的数组
     var html = [];
     var css = "";
@@ -116,7 +116,7 @@ PingTu.prototype.getSmallItem = function () {
 };
 
 
-PingTu.prototype.start = function () {
+PinTu.prototype.start = function () {
     var self = this;
     /*----计算边界----*/
     var place = ['top', 'bottom', 'left', 'right'];
